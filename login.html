@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PLAAF 作戰指揮儀表板公開展示版 — 支援手機觀看">
+  <title>PLAAF — 系統登入</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="classified-bar">
+      <span class="classified-dot"></span>
+      <span>PUBLIC DEMO — MOBILE READY</span>
+      <span class="classified-dot"></span>
+    </div>
+
+    <div class="login-card">
+      <div class="login-header">
+        <div class="emblem">✦</div>
+        <h1 class="login-title">空軍作戰指揮系統</h1>
+        <div class="login-subtitle">PLAAF COMMAND DASHBOARD — PUBLIC DEMO</div>
+      </div>
+
+      <div class="login-divider">
+        <span class="divider-line"></span>
+        <span class="divider-text">身份驗證</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <form id="loginForm" autocomplete="off">
+        <div class="input-group">
+          <label for="username">
+            <span class="input-icon">👤</span>
+            操作員帳號
+          </label>
+          <input type="text" id="username" name="username" placeholder="輸入帳號" required autocomplete="off">
+          <div class="input-border-glow"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="password">
+            <span class="input-icon">🔑</span>
+            存取密碼
+          </label>
+          <input type="password" id="password" name="password" placeholder="輸入密碼" required autocomplete="off">
+          <div class="input-border-glow"></div>
+        </div>
+
+        <div class="error-msg" id="errorMsg"></div>
+
+        <button type="submit" class="login-btn" id="loginBtn">
+          <span class="btn-text">驗證身份</span>
+          <span class="btn-loading" id="btnLoading">
+            <span class="spinner"></span>
+            驗證中...
+          </span>
+        </button>
+
+        <div class="demo-login-panel">
+          <div class="demo-login-title">公開展示帳號</div>
+          <div class="demo-login-actions">
+            <button type="button" class="demo-login-btn" data-demo-login="1" data-username="admin">填入管理者</button>
+            <button type="button" class="demo-login-btn" data-demo-login="1" data-username="operator">填入操作員</button>
+          </div>
+          <div class="demo-login-note">任何人都可用手機登入觀看。直式適合總覽，橫式更適合任務表格與基地部署。</div>
+        </div>
+      </form>
+
+      <div class="login-status-bar">
+        <div class="status-item">
+          <span class="status-dot green"></span>
+          <span>系統在線</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot green"></span>
+          <span>靜態資料鏈</span>
+        </div>
+        <div class="status-item">
+          <span id="loginClock" class="clock-text">00:00:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-footer">
+      <span>PLAAF COMMAND SYSTEM</span>
+      <span class="footer-sep">•</span>
+      <span>公開展示版 · GitHub Pages</span>
+      <span class="footer-sep">•</span>
+      <span>v2.1</span>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+
+</html>

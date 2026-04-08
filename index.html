@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="中國人民解放軍空軍作戰指揮儀表板 - 態勢感知與裝備總覽">
+  <title>PLAAF 作戰指揮儀表板</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header-left">
+      <div class="header-emblem">✦</div>
+      <div class="header-title">
+        <h1>空軍作戰指揮儀表板</h1>
+        <div class="subtitle">PLAAF COMMAND DASHBOARD</div>
+      </div>
+    </div>
+    <div class="header-center">
+      <div class="status-indicator">
+        <span class="status-dot green"></span>
+        <span>系統正常</span>
+      </div>
+      <div class="status-indicator">
+        <span class="status-dot green"></span>
+        <span>數據鏈</span>
+      </div>
+      <div class="status-indicator">
+        <span class="status-dot amber"></span>
+        <span>威脅等級 II</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="user-info" id="userInfo" style="display:none;"></div>
+      <div>
+        <div class="clock-display" id="clock">00:00:00</div>
+        <div class="date-display" id="date">2026-03-17</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== [C] Alert Ticker ===== -->
+  <div class="alert-ticker" id="alertTicker">
+    <div class="ticker-label">⚡ INTEL</div>
+    <div class="ticker-track-wrapper">
+      <div class="ticker-track"></div>
+    </div>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" data-tab="overview">總覽</button>
+    <button class="nav-tab" data-tab="airbases">基地部署</button>
+    <button class="nav-tab" data-tab="equipment">裝備介紹</button>
+    <button class="nav-tab" data-tab="exercises">歷年演習</button>
+    <button class="nav-tab admin-only" data-tab="admin" style="display:none; color: var(--accent-amber); border-color: rgba(255,184,51,0.3);">⚙️ 後端管理</button>
+  </nav>
+
+  <!-- ===== Main Content ===== -->
+  <main class="main-content">
+
+    <!-- Tab 1: Overview -->
+    <div class="tab-pane active" id="tab-overview">
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card animate-in delay-1" style="--glow-color: var(--accent-cyan)">
+          <div class="stat-value" data-count="1695">0</div>
+          <div class="stat-label">作戰飛機總數</div>
+          <div class="stat-sub">▲ +85 本年度</div>
+        </div>
+        <div class="stat-card animate-in delay-2" style="--glow-color: var(--accent-blue)">
+          <div class="stat-value" data-count="78" data-suffix="%">0%</div>
+          <div class="stat-label">整體就緒率</div>
+          <div class="stat-sub">目標 ≥ 80%</div>
+        </div>
+        <div class="stat-card animate-in delay-3" style="--glow-color: var(--accent-amber)">
+          <div class="stat-value" data-count="6">0</div>
+          <div class="stat-label">今日任務</div>
+          <div class="stat-sub">3 進行中</div>
+        </div>
+        <div class="stat-card animate-in delay-4" style="--glow-color: var(--accent-purple)">
+          <div class="stat-value" data-count="119700">0</div>
+          <div class="stat-label">現役人員</div>
+          <div class="stat-sub">飛行員 8,500</div>
+        </div>
+        <div class="stat-card animate-in delay-5" style="--glow-color: var(--accent-green)">
+          <div class="stat-value" data-count="5">0</div>
+          <div class="stat-label">戰區部署</div>
+          <div class="stat-sub">全域覆蓋</div>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div class="dashboard-grid">
+        <!-- Fleet Overview -->
+        <div class="panel hud-corners span-2 animate-in delay-2">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">✈</span> 機隊概覽</div>
+            <span class="panel-badge badge-live">LIVE</span>
+          </div>
+          <div class="fleet-bar-chart" id="fleetChart"></div>
+        </div>
+
+        <!-- Readiness -->
+        <div class="panel hud-corners animate-in delay-3">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">◉</span> 戰備狀態</div>
+            <span class="panel-badge badge-info">REALTIME</span>
+          </div>
+          <div class="readiness-container">
+            <div class="readiness-ring">
+              <canvas id="readinessCanvas" width="180" height="180"></canvas>
+              <div class="readiness-center">
+                <div class="readiness-value">0%</div>
+                <div class="readiness-label">就緒率</div>
+              </div>
+            </div>
+            <div class="readiness-details">
+              <div class="readiness-item">
+                <div class="readiness-color" style="background: var(--accent-cyan)"></div>
+                <span class="readiness-text">作戰就緒</span>
+                <span class="readiness-pct" style="color: var(--accent-cyan)">78%</span>
+              </div>
+              <div class="readiness-item">
+                <div class="readiness-color" style="background: var(--accent-amber)"></div>
+                <span class="readiness-text">維護保養</span>
+                <span class="readiness-pct" style="color: var(--accent-amber)">12%</span>
+              </div>
+              <div class="readiness-item">
+                <div class="readiness-color" style="background: var(--accent-blue)"></div>
+                <span class="readiness-text">待命備勤</span>
+                <span class="readiness-pct" style="color: var(--accent-blue)">7%</span>
+              </div>
+              <div class="readiness-item">
+                <div class="readiness-color" style="background: var(--accent-purple)"></div>
+                <span class="readiness-text">升級改裝</span>
+                <span class="readiness-pct" style="color: var(--accent-purple)">3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Row -->
+      <div class="dashboard-grid two-col">
+        <!-- Missions -->
+        <div class="panel hud-corners animate-in delay-3">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">📋</span> 今日任務排程</div>
+            <span class="panel-badge badge-live">LIVE</span>
+          </div>
+          <table class="mission-table">
+            <thead>
+              <tr>
+                <th>任務編號</th>
+                <th>類型</th>
+                <th>戰區</th>
+                <th>起飛基地</th>
+                <th>機型</th>
+                <th>時間</th>
+                <th>狀態</th>
+              </tr>
+            </thead>
+            <tbody id="missionTableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Radar -->
+        <div class="panel hud-corners animate-in delay-4">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">📡</span> 預警雷達</div>
+            <span class="panel-badge badge-live">SCANNING</span>
+          </div>
+          <div class="radar-container">
+            <canvas id="radarCanvas" width="320" height="320"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Row: Theater Map + Event Log -->
+      <div class="dashboard-grid two-col">
+        <!-- Theater Map -->
+        <div class="panel hud-corners animate-in delay-4">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">🗺</span> 戰區指揮部署</div>
+            <span class="panel-badge badge-live">TACTICAL</span>
+          </div>
+          <div class="theater-map-container">
+            <canvas id="theaterMapCanvas" width="600" height="380"></canvas>
+          </div>
+        </div>
+
+        <!-- Event Log -->
+        <div class="panel hud-corners animate-in delay-5">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">📟</span> 即時事件日誌</div>
+            <span class="panel-badge badge-live">STREAMING</span>
+          </div>
+          <div class="event-log" id="eventLog"></div>
+        </div>
+      </div>
+
+      <!-- Fourth Row -->
+      <div class="dashboard-grid">
+        <!-- Personnel -->
+        <div class="panel hud-corners full-width animate-in delay-4">
+          <div class="panel-header">
+            <div class="panel-title"><span class="icon">👤</span> 人員編制</div>
+            <span class="panel-badge badge-info">TOTAL: 119,700</span>
+          </div>
+          <div class="personnel-grid" id="personnelGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Airbases -->
+    <div class="tab-pane" id="tab-airbases">
+      <div class="airbase-grid" id="airbaseGrid"></div>
+    </div>
+
+    <!-- Tab 3: Equipment -->
+    <div class="tab-pane" id="tab-equipment">
+      <div class="equipment-grid" id="equipmentGrid"></div>
+    </div>
+
+    <!-- Tab 3: Exercises -->
+    <div class="tab-pane" id="tab-exercises">
+      <div class="panel hud-corners full-width">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">⚔</span> 歷年重要演習紀錄</div>
+          <span class="panel-badge badge-info">2015 — 2026</span>
+        </div>
+        <div class="exercises-timeline" id="exercisesTimeline"></div>
+      </div>
+    </div>
+
+    <!-- ===== [Tab 5] 後端管理 (Admin Only) ===== -->
+    <div class="tab-pane admin-only" id="tab-admin" style="display: none;">
+      <div class="stats-row" style="margin-bottom: 20px;">
+        <div class="panel stat-card" style="border-color: rgba(255,184,51,0.3);">
+          <div class="stat-value" id="adminTotalUsers" style="color: var(--accent-amber);">0</div>
+          <div class="stat-label">系統帳號總數</div>
+        </div>
+        <div class="panel stat-card" style="border-color: rgba(255,184,51,0.3);">
+          <div class="stat-value" id="adminTotalLogins" style="color: var(--accent-amber);">0</div>
+          <div class="stat-label">總登入次數</div>
+          <div class="stat-trend">今日 <span id="adminTodayLogins">0</span> 次</div>
+        </div>
+        <div class="panel stat-card" style="border-color: rgba(255,184,51,0.3);">
+          <div class="stat-value" id="adminFailedLogins" style="color: var(--accent-red);">0</div>
+          <div class="stat-label">登入失敗攔截</div>
+        </div>
+        <div class="panel stat-card" style="border-color: rgba(255,184,51,0.3);">
+          <div class="stat-value" id="adminTotalOps" style="color: var(--accent-amber);">0</div>
+          <div class="stat-label">API 操作紀錄</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid two-col" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- 登入紀錄 -->
+        <div class="panel" style="border-color: rgba(255,184,51,0.2);">
+          <div class="panel-header">
+            <h2 class="panel-title" style="color: var(--accent-amber);">⚿ 系統登入紀錄</h2>
+            <div class="panel-actions">
+              <button class="view-btn" onclick="loadAdminData()" style="color: var(--accent-amber); border-color: var(--accent-amber);">🔄 刷新</button>
+            </div>
+          </div>
+          <div class="log-table-container" style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+            <table class="mission-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>時間</th>
+                  <th>帳號</th>
+                  <th>IP 來源</th>
+                  <th>狀態</th>
+                </tr>
+              </thead>
+              <tbody id="loginLogsBody">
+                <!-- Data injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 操作紀錄 -->
+        <div class="panel" style="border-color: rgba(255,184,51,0.2);">
+          <div class="panel-header">
+            <h2 class="panel-title" style="color: var(--accent-amber);">⚙️ API 操作紀錄</h2>
+          </div>
+          <div class="log-table-container" style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+            <table class="mission-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>時間</th>
+                  <th>操作員</th>
+                  <th>動作</th>
+                  <th>目標路徑</th>
+                  <th>狀態</th>
+                </tr>
+              </thead>
+              <tbody id="operationLogsBody">
+                <!-- Data injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="footer-content">
+      <span class="footer-text">PLAAF COMMAND DASHBOARD</span>
+      <span class="footer-divider"></span>
+      <span class="footer-text">模擬資料 · 僅供展示</span>
+      <span class="footer-divider"></span>
+      <span class="footer-status">
+        <span class="status-dot green"></span>
+        SYSTEM ONLINE
+      </span>
+      <span class="footer-divider"></span>
+      <span class="footer-text">更新日期: 2026-03-17</span>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

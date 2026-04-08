@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "role": "飛行員",
+    "count": 8500,
+    "image": "images/pilots.png"
+  },
+  {
+    "id": 2,
+    "role": "地勤人員",
+    "count": 45000,
+    "image": "images/ground_crew.png"
+  },
+  {
+    "id": 3,
+    "role": "指揮人員",
+    "count": 3200,
+    "image": "images/commanders.png"
+  },
+  {
+    "id": 4,
+    "role": "技術人員",
+    "count": 28000,
+    "image": "images/technical.png"
+  },
+  {
+    "id": 5,
+    "role": "後勤保障",
+    "count": 35000,
+    "image": "images/logistics.png"
+  }
+]

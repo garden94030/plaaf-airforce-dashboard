@@ -1,0 +1,6 @@
+server/node_modules/
+server/plaaf.db
+server/cloudflared.exe
+node_modules/
+.DS_Store
+Thumbs.db

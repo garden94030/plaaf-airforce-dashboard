@@ -1,0 +1,102 @@
+[
+  {
+    "id": 540,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/login-logs",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:56"
+  },
+  {
+    "id": 538,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/events",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:55"
+  },
+  {
+    "id": 539,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/stats",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:55"
+  },
+  {
+    "id": 537,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/alerts",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:54"
+  },
+  {
+    "id": 536,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/exercises",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:53"
+  },
+  {
+    "id": 535,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/equipment",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:52"
+  },
+  {
+    "id": 534,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/airbases",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:50"
+  },
+  {
+    "id": 533,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/theaters",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:49"
+  },
+  {
+    "id": 532,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/personnel",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:47"
+  },
+  {
+    "id": 530,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "method": "GET",
+    "path": "/readiness",
+    "status_code": 200,
+    "ip": "::ffff:127.0.0.1",
+    "created_at": "2026-04-08 12:52:46"
+  }
+]

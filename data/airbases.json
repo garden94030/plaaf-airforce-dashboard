@@ -1,0 +1,591 @@
+[
+  {
+    "id": 1,
+    "name": "蕪湖基地",
+    "theater": "東部戰區",
+    "province": "安徽",
+    "lat": 31.35,
+    "lon": 117.73,
+    "x": 79,
+    "y": 50,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "東部戰區空軍重點基地，部署殲-20隱身戰鬥機旅，擔負東海方向制空作戰任務。",
+    "aircraft": [
+      {
+        "id": 1,
+        "airbase_id": 1,
+        "type": "殲-20",
+        "code": "J-20",
+        "count": 40,
+        "color": "#00ffc8"
+      },
+      {
+        "id": 2,
+        "airbase_id": 1,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 24,
+        "color": "#00bfff"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "長興基地",
+    "theater": "東部戰區",
+    "province": "浙江",
+    "lat": 30.93,
+    "lon": 119.91,
+    "x": 82,
+    "y": 52,
+    "runway": "3,200m",
+    "status": "operational",
+    "description": "東海方向重要前置基地，殲-16多用途戰鬥機與殲-10C混合部署。",
+    "aircraft": [
+      {
+        "id": 3,
+        "airbase_id": 2,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 32,
+        "color": "#00bfff"
+      },
+      {
+        "id": 4,
+        "airbase_id": 2,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 24,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "衢州基地",
+    "theater": "東部戰區",
+    "province": "浙江",
+    "lat": 28.97,
+    "lon": 118.87,
+    "x": 80,
+    "y": 55,
+    "runway": "3,000m",
+    "status": "operational",
+    "description": "東南沿海防空要地，負責台海方向空防巡邏與攔截任務。",
+    "aircraft": [
+      {
+        "id": 5,
+        "airbase_id": 3,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 36,
+        "color": "#7b68ee"
+      },
+      {
+        "id": 6,
+        "airbase_id": 3,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 24,
+        "color": "#ff6b6b"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "濟南遙墻基地",
+    "theater": "東部戰區",
+    "province": "山東",
+    "lat": 36.86,
+    "lon": 117.22,
+    "x": 78,
+    "y": 38,
+    "runway": "3,600m",
+    "status": "operational",
+    "description": "遠程轟炸機主力基地之一，轟-6K/N擔負西太平洋方向戰略威懾。",
+    "aircraft": [
+      {
+        "id": 7,
+        "airbase_id": 4,
+        "type": "轟-6K/N",
+        "code": "H-6K/N",
+        "count": 36,
+        "color": "#ffa500"
+      },
+      {
+        "id": 8,
+        "airbase_id": 4,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 24,
+        "color": "#00bfff"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "遂溪基地",
+    "theater": "南部戰區",
+    "province": "廣東",
+    "lat": 21.36,
+    "lon": 110.35,
+    "x": 72,
+    "y": 72,
+    "runway": "3,500m",
+    "status": "operational",
+    "description": "南海方向核心基地，殲-20旅於此部署，擔負南海制空與巡邏任務。",
+    "aircraft": [
+      {
+        "id": 9,
+        "airbase_id": 5,
+        "type": "殲-20",
+        "code": "J-20",
+        "count": 32,
+        "color": "#00ffc8"
+      },
+      {
+        "id": 10,
+        "airbase_id": 5,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 24,
+        "color": "#ff6b6b"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "南寧基地",
+    "theater": "南部戰區",
+    "province": "廣西",
+    "lat": 22.61,
+    "lon": 108.17,
+    "x": 68,
+    "y": 70,
+    "runway": "3,200m",
+    "status": "operational",
+    "description": "南海西部防空重鎮，兼具預警指揮能力。",
+    "aircraft": [
+      {
+        "id": 11,
+        "airbase_id": 6,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 36,
+        "color": "#7b68ee"
+      },
+      {
+        "id": 12,
+        "airbase_id": 6,
+        "type": "空警-500",
+        "code": "KJ-500",
+        "count": 4,
+        "color": "#ff69b4"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "昆明基地",
+    "theater": "南部戰區",
+    "province": "雲南",
+    "lat": 24.99,
+    "lon": 102.74,
+    "x": 55,
+    "y": 65,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "西南方向前沿基地，兼顧高原作戰訓練與邊境防空。",
+    "aircraft": [
+      {
+        "id": 13,
+        "airbase_id": 7,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 24,
+        "color": "#00bfff"
+      },
+      {
+        "id": 14,
+        "airbase_id": 7,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 24,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "成都鳳凰山基地",
+    "theater": "西部戰區",
+    "province": "四川",
+    "lat": 30.58,
+    "lon": 103.95,
+    "x": 48,
+    "y": 52,
+    "runway": "3,800m",
+    "status": "operational",
+    "description": "西部戰區空軍司令部所在地，殲-20最大部署基地，高原作戰核心力量。",
+    "aircraft": [
+      {
+        "id": 15,
+        "airbase_id": 8,
+        "type": "殲-20",
+        "code": "J-20",
+        "count": 48,
+        "color": "#00ffc8"
+      },
+      {
+        "id": 16,
+        "airbase_id": 8,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 36,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "武功基地",
+    "theater": "西部戰區",
+    "province": "陝西",
+    "lat": 34.26,
+    "lon": 108.21,
+    "x": 55,
+    "y": 42,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "西部戰略轟炸機基地，轟-6K/N主力部署地，擔負西向戰略打擊任務。",
+    "aircraft": [
+      {
+        "id": 17,
+        "airbase_id": 9,
+        "type": "轟-6K/N",
+        "code": "H-6K/N",
+        "count": 48,
+        "color": "#ffa500"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "和田基地",
+    "theater": "西部戰區",
+    "province": "新疆",
+    "lat": 37.04,
+    "lon": 79.87,
+    "x": 22,
+    "y": 40,
+    "runway": "3,600m",
+    "status": "operational",
+    "description": "西部邊境高原基地，常年高強度訓練，擔負西部國土防空。",
+    "aircraft": [
+      {
+        "id": 18,
+        "airbase_id": 10,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 36,
+        "color": "#ff6b6b"
+      },
+      {
+        "id": 19,
+        "airbase_id": 10,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 24,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "烏魯木齊地窩堡基地",
+    "theater": "西部戰區",
+    "province": "新疆",
+    "lat": 43.91,
+    "lon": 87.47,
+    "x": 25,
+    "y": 28,
+    "runway": "3,600m",
+    "status": "operational",
+    "description": "西北戰略運輸與作戰基地，兼具空運投送與制空能力。",
+    "aircraft": [
+      {
+        "id": 20,
+        "airbase_id": 11,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 24,
+        "color": "#00bfff"
+      },
+      {
+        "id": 21,
+        "airbase_id": 11,
+        "type": "運-20",
+        "code": "Y-20",
+        "count": 8,
+        "color": "#32cd32"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "鞍山基地",
+    "theater": "北部戰區",
+    "province": "遼寧",
+    "lat": 41.1,
+    "lon": 122.85,
+    "x": 82,
+    "y": 28,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "北部戰區隱身戰鬥機核心基地，殲-20 與殲-35A 雙隱身機型聯合部署。",
+    "aircraft": [
+      {
+        "id": 22,
+        "airbase_id": 12,
+        "type": "殲-20",
+        "code": "J-20",
+        "count": 40,
+        "color": "#00ffc8"
+      },
+      {
+        "id": 23,
+        "airbase_id": 12,
+        "type": "殲-35A",
+        "code": "J-35A",
+        "count": 24,
+        "color": "#e0e0e0"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "大連基地",
+    "theater": "北部戰區",
+    "province": "遼寧",
+    "lat": 38.97,
+    "lon": 121.54,
+    "x": 82,
+    "y": 32,
+    "runway": "3,200m",
+    "status": "operational",
+    "description": "渤海灣防空重鎮，殲-16主力基地之一，兼具海上作戰能力。",
+    "aircraft": [
+      {
+        "id": 24,
+        "airbase_id": 13,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 36,
+        "color": "#00bfff"
+      },
+      {
+        "id": 25,
+        "airbase_id": 13,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 24,
+        "color": "#ff6b6b"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "齊齊哈爾基地",
+    "theater": "北部戰區",
+    "province": "黑龍江",
+    "lat": 47.24,
+    "lon": 123.92,
+    "x": 80,
+    "y": 18,
+    "runway": "3,200m",
+    "status": "operational",
+    "description": "北部縱深防禦基地，負責北方空域預警與巡邏。",
+    "aircraft": [
+      {
+        "id": 26,
+        "airbase_id": 14,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 36,
+        "color": "#ff6b6b"
+      },
+      {
+        "id": 27,
+        "airbase_id": 14,
+        "type": "空警-500",
+        "code": "KJ-500",
+        "count": 4,
+        "color": "#ff69b4"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "武漢基地",
+    "theater": "中部戰區",
+    "province": "湖北",
+    "lat": 30.78,
+    "lon": 114.21,
+    "x": 72,
+    "y": 52,
+    "runway": "3,600m",
+    "status": "operational",
+    "description": "戰略空運核心基地，運-20 主力部署地，擔負全軍空運投送任務。",
+    "aircraft": [
+      {
+        "id": 28,
+        "airbase_id": 15,
+        "type": "運-20",
+        "code": "Y-20",
+        "count": 32,
+        "color": "#32cd32"
+      },
+      {
+        "id": 29,
+        "airbase_id": 15,
+        "type": "空警-500",
+        "code": "KJ-500",
+        "count": 8,
+        "color": "#ff69b4"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "大同基地",
+    "theater": "中部戰區",
+    "province": "山西",
+    "lat": 40.06,
+    "lon": 113.29,
+    "x": 70,
+    "y": 32,
+    "runway": "3,200m",
+    "status": "operational",
+    "description": "華北縱深防空重鎮，常年承辦「金頭盔」空戰對抗競賽。",
+    "aircraft": [
+      {
+        "id": 30,
+        "airbase_id": 16,
+        "type": "殲-16",
+        "code": "J-16",
+        "count": 36,
+        "color": "#00bfff"
+      },
+      {
+        "id": 31,
+        "airbase_id": 16,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 24,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "鄭州基地",
+    "theater": "中部戰區",
+    "province": "河南",
+    "lat": 34.53,
+    "lon": 113.84,
+    "x": 72,
+    "y": 42,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "殲-35A 新型隱身戰鬥機換裝基地，中部戰區防空核心。",
+    "aircraft": [
+      {
+        "id": 32,
+        "airbase_id": 17,
+        "type": "殲-35A",
+        "code": "J-35A",
+        "count": 36,
+        "color": "#e0e0e0"
+      },
+      {
+        "id": 33,
+        "airbase_id": 17,
+        "type": "殲-10C",
+        "code": "J-10C",
+        "count": 24,
+        "color": "#7b68ee"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "信陽基地",
+    "theater": "中部戰區",
+    "province": "河南",
+    "lat": 32.13,
+    "lon": 114.07,
+    "x": 72,
+    "y": 48,
+    "runway": "3,000m",
+    "status": "operational",
+    "description": "無人攻擊機部署基地，攻擊-11 隱身無人機在此進行實戰訓練。",
+    "aircraft": [
+      {
+        "id": 34,
+        "airbase_id": 18,
+        "type": "運-20",
+        "code": "Y-20",
+        "count": 16,
+        "color": "#32cd32"
+      },
+      {
+        "id": 35,
+        "airbase_id": 18,
+        "type": "攻擊-11",
+        "code": "GJ-11",
+        "count": 12,
+        "color": "#9b59b6"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "遂溪陵水基地",
+    "theater": "南部戰區",
+    "province": "海南",
+    "lat": 18.51,
+    "lon": 110.03,
+    "x": 70,
+    "y": 78,
+    "runway": "3,400m",
+    "status": "operational",
+    "description": "中國最南端空軍基地，直面南海，擔負南海巡邏、偵察與遠程打擊任務。",
+    "aircraft": [
+      {
+        "id": 36,
+        "airbase_id": 19,
+        "type": "殲-11B",
+        "code": "J-11B",
+        "count": 24,
+        "color": "#ff6b6b"
+      },
+      {
+        "id": 37,
+        "airbase_id": 19,
+        "type": "空警-500",
+        "code": "KJ-500",
+        "count": 6,
+        "color": "#ff69b4"
+      },
+      {
+        "id": 38,
+        "airbase_id": 19,
+        "type": "轟-6K/N",
+        "code": "H-6K/N",
+        "count": 12,
+        "color": "#ffa500"
+      }
+    ]
+  }
+]

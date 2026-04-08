@@ -1,0 +1,102 @@
+[
+  {
+    "id": 29,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "role": "admin",
+    "ip": "::ffff:127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; zh-TW) PowerShell/7.6.0",
+    "success": 1,
+    "created_at": "2026-04-08 12:52:44"
+  },
+  {
+    "id": 28,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari Line/26.3.0",
+    "success": 1,
+    "created_at": "2026-04-07 01:27:19"
+  },
+  {
+    "id": 27,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+    "success": 1,
+    "created_at": "2026-04-07 01:24:16"
+  },
+  {
+    "id": 26,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+    "success": 1,
+    "created_at": "2026-04-07 01:21:49"
+  },
+  {
+    "id": 25,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "role": "admin",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "success": 1,
+    "created_at": "2026-04-07 01:12:26"
+  },
+  {
+    "id": 24,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "success": 1,
+    "created_at": "2026-04-07 01:12:24"
+  },
+  {
+    "id": 23,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+    "success": 1,
+    "created_at": "2026-04-07 01:12:19"
+  },
+  {
+    "id": 22,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+    "success": 1,
+    "created_at": "2026-04-07 01:12:12"
+  },
+  {
+    "id": 21,
+    "username": "admin",
+    "display_name": "系統管理員",
+    "role": "admin",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari Line/26.2.0",
+    "success": 1,
+    "created_at": "2026-04-07 01:11:01"
+  },
+  {
+    "id": 20,
+    "username": "operator",
+    "display_name": "值班操作員",
+    "role": "operator",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "success": 1,
+    "created_at": "2026-04-07 01:06:54"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "type": "殲-20",
+    "code": "J-20",
+    "role": "第五代隱身戰鬥機",
+    "count": 250,
+    "ready": 218,
+    "color": "#00ffc8"
+  },
+  {
+    "id": 2,
+    "type": "殲-16",
+    "code": "J-16",
+    "role": "多用途戰鬥機",
+    "count": 350,
+    "ready": 310,
+    "color": "#00bfff"
+  },
+  {
+    "id": 3,
+    "type": "殲-10C",
+    "code": "J-10C",
+    "role": "輕型多用途戰鬥機",
+    "count": 480,
+    "ready": 425,
+    "color": "#7b68ee"
+  },
+  {
+    "id": 4,
+    "type": "殲-11B",
+    "code": "J-11B",
+    "role": "重型制空戰鬥機",
+    "count": 260,
+    "ready": 220,
+    "color": "#ff6b6b"
+  },
+  {
+    "id": 5,
+    "type": "轟-6K/N",
+    "code": "H-6K/N",
+    "role": "遠程戰略轟炸機",
+    "count": 180,
+    "ready": 155,
+    "color": "#ffa500"
+  },
+  {
+    "id": 6,
+    "type": "運-20",
+    "code": "Y-20",
+    "role": "大型戰略運輸機",
+    "count": 85,
+    "ready": 72,
+    "color": "#32cd32"
+  },
+  {
+    "id": 7,
+    "type": "空警-500",
+    "code": "KJ-500",
+    "role": "預警指揮機",
+    "count": 30,
+    "ready": 26,
+    "color": "#ff69b4"
+  },
+  {
+    "id": 8,
+    "type": "殲-35A",
+    "code": "J-35A",
+    "role": "第五代中型隱身戰鬥機",
+    "count": 60,
+    "ready": 55,
+    "color": "#e0e0e0"
+  }
+]

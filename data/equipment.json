@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "name": "殲-20 (J-20)",
+    "nickname": "威龍",
+    "type": "第五代隱身戰鬥機",
+    "image": "images/j20.png",
+    "description": "殲-20是中國自主研發的第五代隱身戰鬥機，具備超音速巡航、超視距攻擊、高機動性和隱身能力。2017年正式列裝部隊，是中國空軍制空作戰的核心裝備。",
+    "specs": {
+      "manufacturer": "成都飛機工業集團",
+      "firstFlight": "2011年1月11日",
+      "length": "20.4 m",
+      "wingspan": "13.5 m",
+      "maxSpeed": "2,100 km/h (Mach 2.0+)",
+      "range": "5,500 km",
+      "combatRadius": "2,000 km",
+      "ceiling": "20,000 m",
+      "weapons": "PL-15/PL-10E 空對空飛彈、精確導引炸彈"
+    }
+  },
+  {
+    "id": 2,
+    "name": "殲-16 (J-16)",
+    "nickname": "",
+    "type": "多用途戰鬥機",
+    "image": "images/j16.png",
+    "description": "殲-16是一款重型雙座多用途戰鬥機，具備強大的對空、對地、對海攻擊能力。配備先進的主動相控陣雷達和電子戰系統，是中國空軍攻防兼備的主力機型。",
+    "specs": {
+      "manufacturer": "瀋陽飛機工業集團",
+      "firstFlight": "2011年10月",
+      "length": "22.0 m",
+      "wingspan": "14.7 m",
+      "maxSpeed": "2,400 km/h (Mach 2.0+)",
+      "range": "3,900 km",
+      "combatRadius": "1,500 km",
+      "ceiling": "17,000 m",
+      "weapons": "PL-15/PL-12/PL-10 空對空飛彈、反艦飛彈、精確導引炸彈"
+    }
+  },
+  {
+    "id": 3,
+    "name": "殲-10C (J-10C)",
+    "nickname": "猛龍",
+    "type": "輕型多用途戰鬥機",
+    "image": "images/j10c.png",
+    "description": "殲-10C是殲-10系列的最新改型，配備國產渦扇-10B發動機和主動相控陣雷達，是中國空軍國土防空和近距作戰的中堅力量。",
+    "specs": {
+      "manufacturer": "成都飛機工業集團",
+      "firstFlight": "2013年12月",
+      "length": "16.9 m",
+      "wingspan": "9.75 m",
+      "maxSpeed": "2,200 km/h (Mach 1.8+)",
+      "range": "3,200 km",
+      "combatRadius": "1,200 km",
+      "ceiling": "18,000 m",
+      "weapons": "PL-15/PL-10 空對空飛彈、雷射導引炸彈"
+    }
+  },
+  {
+    "id": 4,
+    "name": "轟-6K/N (H-6K/N)",
+    "nickname": "戰神",
+    "type": "遠程戰略轟炸機",
+    "image": "images/h6k.png",
+    "description": "轟-6K/N是中國空軍遠程打擊的核心力量，可搭載巡航飛彈執行戰略威懾與遠海打擊任務。H-6N型增加了空中加油能力，並可掛載空射彈道飛彈。",
+    "specs": {
+      "manufacturer": "西安飛機工業集團",
+      "firstFlight": "2007年（H-6K）",
+      "length": "34.8 m",
+      "wingspan": "33.0 m",
+      "maxSpeed": "1,050 km/h",
+      "range": "8,000+ km",
+      "combatRadius": "3,500 km",
+      "ceiling": "12,000 m",
+      "weapons": "長劍-20巡航飛彈 ×6、鷹擊-12反艦飛彈"
+    }
+  },
+  {
+    "id": 5,
+    "name": "運-20 (Y-20)",
+    "nickname": "鯤鵬",
+    "type": "大型戰略運輸機",
+    "image": "images/y20.png",
+    "description": "運-20是中國自主研發的大型戰略運輸機，大幅提升了空軍的戰略投送能力。可運載主戰坦克、裝甲車輛等重型裝備，也衍生出空中加油機等特種改型。",
+    "specs": {
+      "manufacturer": "西安飛機工業集團",
+      "firstFlight": "2013年1月26日",
+      "length": "47.0 m",
+      "wingspan": "45.0 m",
+      "maxSpeed": "830 km/h",
+      "range": "7,800 km",
+      "payload": "66,000 kg",
+      "ceiling": "13,000 m",
+      "weapons": "無（運輸機）"
+    }
+  },
+  {
+    "id": 6,
+    "name": "空警-500 (KJ-500)",
+    "nickname": "",
+    "type": "預警指揮機",
+    "image": "images/kj500.png",
+    "description": "空警-500是中國空軍新一代預警指揮機，採用圓盤式三面陣雷達天線，具備360°無盲區探測能力，為作戰機群提供態勢感知和指揮控制。",
+    "specs": {
+      "manufacturer": "中國電子科技集團 / 陝西飛機工業",
+      "firstFlight": "2014年",
+      "length": "34.0 m",
+      "wingspan": "38.0 m",
+      "maxSpeed": "550 km/h",
+      "range": "5,700 km",
+      "endurance": "10+ 小時",
+      "ceiling": "10,000 m",
+      "radar": "三面固定式主動相控陣雷達"
+    }
+  },
+  {
+    "id": 7,
+    "name": "殲-35A (J-35A)",
+    "nickname": "鶻鷹",
+    "type": "第五代中型隱身戰鬥機",
+    "image": "images/j35a.png",
+    "description": "殲-35A是中國第二款第五代隱身戰鬥機，2024年珠海航展首次公開亮相。作為中型戰鬥機，與殲-20形成高低搭配，進一步強化中國空軍的隱身作戰體系。",
+    "specs": {
+      "manufacturer": "瀋陽飛機工業集團",
+      "firstFlight": "2024年公開亮相",
+      "length": "17.3 m",
+      "wingspan": "11.5 m",
+      "maxSpeed": "2,200 km/h (Mach 1.8+)",
+      "range": "4,000 km",
+      "combatRadius": "1,350 km",
+      "ceiling": "18,000 m",
+      "weapons": "PL-15/PL-10 空對空飛彈"
+    }
+  },
+  {
+    "id": 8,
+    "name": "攻擊-11 (GJ-11)",
+    "nickname": "利劍",
+    "type": "隱身無人攻擊機",
+    "image": "images/gj11.png",
+    "description": "攻擊-11是中國自主研發的大型飛翼式隱身無人攻擊機，具備高度隱身性能。可與殲-20等有人戰鬥機協同作戰，執行偵察、打擊等高危險任務。",
+    "specs": {
+      "manufacturer": "洪都航空工業集團",
+      "firstFlight": "2019年（首次公開）",
+      "length": "~12 m",
+      "wingspan": "~14 m",
+      "maxSpeed": "亞音速",
+      "range": "~4,000 km",
+      "combatRadius": "~1,500 km",
+      "ceiling": "~15,000 m",
+      "weapons": "內置彈艙、精確導引彈藥"
+    }
+  },
+  {
+    "id": 9,
+    "name": "殲-11B (J-11B)",
+    "nickname": "",
+    "type": "重型制空戰鬥機",
+    "image": "images/j11b.png",
+    "description": "殲-11B是基於蘇-27SK國產化改進的重型制空戰鬥機，配備國產渦扇-10A發動機和國產航電系統。雖為三代半機型但數量龐大，仍是中國空軍國土防空的重要力量。",
+    "specs": {
+      "manufacturer": "瀋陽飛機工業集團",
+      "firstFlight": "2003年",
+      "length": "21.9 m",
+      "wingspan": "14.7 m",
+      "maxSpeed": "2,500 km/h (Mach 2.35)",
+      "range": "3,530 km",
+      "combatRadius": "1,500 km",
+      "ceiling": "19,000 m",
+      "weapons": "PL-12/PL-8B 空對空飛彈、航空炸彈"
+    }
+  }
+]
