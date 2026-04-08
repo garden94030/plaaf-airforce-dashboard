@@ -33,6 +33,7 @@
     button.className = 'login-lang-toggle';
     button.textContent = t('language_toggle');
     button.title = t('language_toggle_title');
+    button.setAttribute('aria-label', t('language_toggle_title'));
     button.addEventListener('click', () => {
       setCurrentLanguage(isEnglishMode() ? 'zh' : 'en');
       window.location.reload();

@@ -103,21 +103,7 @@ body::before {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 18px;
-}
-
-.header-emblem {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-cyan-dim), transparent);
-  border: 2px solid var(--accent-cyan);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.3);
-  animation: pulse-glow 3s ease-in-out infinite;
+  gap: 0;
 }
 
 .header-title {
@@ -1741,22 +1727,32 @@ body::before {
 }
 
 .lang-toggle-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 120;
   font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 18px;
   border-radius: 999px;
-  background: rgba(0, 255, 200, 0.08);
-  border: 1px solid rgba(0, 255, 200, 0.24);
-  color: var(--accent-cyan);
+  background: linear-gradient(135deg, rgba(255, 184, 51, 0.96), rgba(255, 107, 53, 0.96));
+  border: 1px solid rgba(255, 219, 153, 0.75);
+  color: #081119;
   cursor: pointer;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   transition: all 0.3s ease;
-  margin-right: 12px;
+  box-shadow: 0 10px 28px rgba(255, 122, 56, 0.38);
 }
 
 .lang-toggle-btn:hover {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 14px rgba(0, 255, 200, 0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(255, 122, 56, 0.48);
+}
+
+.lang-toggle-btn:focus-visible {
+  outline: 2px solid #fff2cf;
+  outline-offset: 3px;
 }
 
 .user-role-badge {
@@ -1803,8 +1799,10 @@ body::before {
   }
 
   .lang-toggle-btn {
-    margin-right: 0;
-    margin-bottom: 10px;
+    top: 10px;
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
   }
 
   .header-title h1 {
