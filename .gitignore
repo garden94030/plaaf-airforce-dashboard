@@ -4,5 +4,7 @@ server/cloudflared.exe
 node_modules/
 *.log
 auto_backup.lock
+__pycache__/
+*.pyc
 .DS_Store
 Thumbs.db
