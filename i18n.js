@@ -232,7 +232,7 @@ const UI_TEXT = {
     scale_label: 'Scale',
     scroll_top: 'Back to Top',
     date_prefix: 'Updated',
-    author_credit: 'Authors: Master’s Students, Institute of Chinese Communist Military Affairs Studies, Shen Hsueh-Yi and Yeh Hsuan-Lien | Advisor: Liu Chih-Hsiang',
+    author_credit: ‘Authors: Master\’s Students, Graduate Institute of China Military Affair Studies, National Defense University, Shen Hsueh-Yi and Yeh Hsuan-Lien | Advisor: Liu Chih-Hsiang’,
     author_credit_label: 'Authors / Advisor',
     login_success: '✓ Authentication Complete — Entering System',
     login_error: '⚠ Please enter both username and password',
