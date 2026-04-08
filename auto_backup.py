@@ -40,6 +40,40 @@ def is_dirty() -> bool:
     return bool(result.stdout.strip())
 
 
+def process_is_running(pid: int) -> bool:
+    if pid <= 0:
+        return False
+
+    try:
+        os.kill(pid, 0)
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+
+    return True
+
+
+def ensure_lock_available() -> bool:
+    if not LOCK_FILE.exists():
+        return True
+
+    try:
+        pid = int(LOCK_FILE.read_text(encoding="utf-8").strip())
+    except (OSError, ValueError):
+        LOCK_FILE.unlink(missing_ok=True)
+        log("removed invalid lock file")
+        return True
+
+    if process_is_running(pid):
+        log(f"auto backup already running (pid {pid})")
+        return False
+
+    LOCK_FILE.unlink(missing_ok=True)
+    log(f"removed stale lock file from pid {pid}")
+    return True
+
+
 def snapshot() -> dict[str, tuple[int, int]]:
     state: dict[str, tuple[int, int]] = {}
     for path in REPO_ROOT.rglob("*"):
@@ -74,26 +108,33 @@ def commit_and_push() -> None:
 
 
 def main() -> int:
-    if LOCK_FILE.exists():
-        log("auto backup already running")
+    if not ensure_lock_available():
         return 0
 
     LOCK_FILE.write_text(str(os.getpid()), encoding="utf-8")
     log("auto backup watcher started")
     last_snapshot = snapshot()
+    last_dirty = is_dirty()
     last_change = time.time()
 
     try:
         while True:
             time.sleep(POLL_SECONDS)
             current_snapshot = snapshot()
-            if current_snapshot != last_snapshot or is_dirty():
+            dirty = is_dirty()
+
+            if current_snapshot != last_snapshot:
                 last_snapshot = current_snapshot
                 last_change = time.time()
+            elif dirty and not last_dirty:
+                last_change = time.time()
 
-            if is_dirty() and time.time() - last_change >= IDLE_SECONDS:
+            last_dirty = dirty
+
+            if dirty and time.time() - last_change >= IDLE_SECONDS:
                 commit_and_push()
                 last_snapshot = snapshot()
+                last_dirty = is_dirty()
                 last_change = time.time()
     except KeyboardInterrupt:
         log("auto backup watcher stopped")
