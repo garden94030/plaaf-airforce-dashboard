@@ -26,6 +26,53 @@
     return;
   }
 
+  function initLanguageToggle() {
+    if (document.getElementById('loginLanguageToggle')) return;
+    const button = document.createElement('button');
+    button.id = 'loginLanguageToggle';
+    button.className = 'login-lang-toggle';
+    button.textContent = t('language_toggle');
+    button.title = t('language_toggle_title');
+    button.addEventListener('click', () => {
+      setCurrentLanguage(isEnglishMode() ? 'zh' : 'en');
+      window.location.reload();
+    });
+    document.body.appendChild(button);
+  }
+
+  function applyLoginTranslations() {
+    document.title = `${t('dashboard_title')} — ${t('login_section')}`;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', t('meta_description'));
+    const title = document.querySelector('.login-title');
+    if (title) title.textContent = t('login_title');
+    const subtitle = document.querySelector('.login-subtitle');
+    if (subtitle) subtitle.textContent = t('login_subtitle');
+    const credits = document.getElementById('loginCredits');
+    if (credits) credits.textContent = t('author_credit');
+    const divider = document.querySelector('.divider-text');
+    if (divider) divider.textContent = t('login_section');
+    const labels = document.querySelectorAll('.input-group label');
+    if (labels[0]) labels[0].childNodes[labels[0].childNodes.length - 1].textContent = ` ${t('login_username')}`;
+    if (labels[1]) labels[1].childNodes[labels[1].childNodes.length - 1].textContent = ` ${t('login_password')}`;
+    userInput.placeholder = t('login_username_placeholder');
+    passwordInput.placeholder = t('login_password_placeholder');
+    const btnText = loginBtn.querySelector('.btn-text');
+    if (btnText) btnText.textContent = t('login_submit');
+    const demoTitle = document.querySelector('.demo-login-title');
+    if (demoTitle) demoTitle.textContent = t('login_demo_accounts');
+    const demoButtons = document.querySelectorAll('[data-demo-login]');
+    if (demoButtons[0]) demoButtons[0].textContent = t('login_fill_admin');
+    if (demoButtons[1]) demoButtons[1].textContent = t('login_fill_operator');
+    const note = document.querySelector('.demo-login-note');
+    if (note) note.textContent = t('login_note');
+    const statusItems = document.querySelectorAll('.login-status-bar .status-item span:last-child');
+    if (statusItems[0]) statusItems[0].textContent = t('login_status_online');
+    if (statusItems[1]) statusItems[1].textContent = t('login_status_data');
+    const footerParts = document.querySelectorAll('.login-footer span');
+    if (footerParts[2]) footerParts[2].textContent = t('login_footer_demo');
+  }
+
   function updateClock() {
     const now = new Date();
     const h = String(now.getHours()).padStart(2, '0');
@@ -111,6 +158,8 @@
   const loginCard = document.querySelector('.login-card');
   const userInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
+  initLanguageToggle();
+  applyLoginTranslations();
 
   function showError(msg) {
     errorMsg.textContent = msg;
@@ -156,7 +205,7 @@
   function completeLogin(account) {
     saveDemoLogin(account);
     loginCard.classList.add('success');
-    loginBtn.innerHTML = '<span class="btn-text">✓ 驗證通過 — 進入系統</span>';
+    loginBtn.innerHTML = `<span class="btn-text">${t('login_success')}</span>`;
     loginBtn.style.color = '#44ee44';
     loginBtn.style.borderColor = '#44ee44';
 
@@ -173,7 +222,7 @@
     const password = passwordInput.value;
 
     if (!username || !password) {
-      showError('⚠ 請輸入帳號和密碼');
+      showError(t('login_error'));
       return;
     }
 
@@ -182,7 +231,7 @@
     try {
       const account = findDemoAccount(username, password);
       if (!account) {
-        throw new Error('帳號或密碼錯誤');
+        throw new Error(isEnglishMode() ? 'Incorrect username or password' : '帳號或密碼錯誤');
       }
       completeLogin(account);
     } catch (err) {

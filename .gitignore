@@ -3,5 +3,6 @@ server/plaaf.db
 server/cloudflared.exe
 node_modules/
 *.log
+auto_backup.lock
 .DS_Store
 Thumbs.db

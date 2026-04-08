@@ -140,6 +140,14 @@ body::before {
   margin-top: 2px;
 }
 
+.header-credit {
+  margin-top: 6px;
+  max-width: 560px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(209, 255, 245, 0.72);
+}
+
 .header-center {
   display: flex;
   align-items: center;
@@ -1732,6 +1740,25 @@ body::before {
   margin-right: 20px;
 }
 
+.lang-toggle-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 255, 200, 0.08);
+  border: 1px solid rgba(0, 255, 200, 0.24);
+  color: var(--accent-cyan);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  margin-right: 12px;
+}
+
+.lang-toggle-btn:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px rgba(0, 255, 200, 0.18);
+}
+
 .user-role-badge {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -1771,6 +1798,15 @@ body::before {
 }
 
 @media (max-width: 640px) {
+  .header-credit {
+    font-size: 10px;
+  }
+
+  .lang-toggle-btn {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
   .header-title h1 {
     font-size: 24px;
   }

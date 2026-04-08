@@ -1,9 +1,116 @@
 // ==========================================
-// 中國人民解放軍空軍儀表板 - 主邏輯
-// 全面優化版 + 視覺科技感強化 + 認證整合
+// 中共空軍敵情儀錶板 - 主邏輯
 // ==========================================
 
+function initLanguageToggle() {
+    const host = document.querySelector('.header-right');
+    if (!host || document.getElementById('languageToggle')) return;
+
+    const button = document.createElement('button');
+    button.id = 'languageToggle';
+    button.className = 'lang-toggle-btn';
+    button.textContent = t('language_toggle');
+    button.title = t('language_toggle_title');
+    button.addEventListener('click', () => {
+        setCurrentLanguage(isEnglishMode() ? 'zh' : 'en');
+        window.location.reload();
+    });
+
+    host.prepend(button);
+}
+
+function applyStaticTranslations() {
+    document.title = t('browser_title');
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', t('meta_description'));
+
+    const headerTitle = document.querySelector('.header-title h1');
+    if (headerTitle) headerTitle.textContent = t('dashboard_title');
+    const subtitle = document.querySelector('.header-title .subtitle');
+    if (subtitle) subtitle.textContent = t('dashboard_subtitle');
+    const credits = document.getElementById('dashboardCredits');
+    if (credits) credits.textContent = t('author_credit');
+
+    const statusTexts = document.querySelectorAll('.header-center .status-indicator span:last-child');
+    if (statusTexts[0]) statusTexts[0].textContent = t('system_normal');
+    if (statusTexts[1]) statusTexts[1].textContent = t('data_link');
+    if (statusTexts[2]) statusTexts[2].textContent = t('threat_level');
+
+    const tickerLabel = document.querySelector('.ticker-label');
+    if (tickerLabel) tickerLabel.textContent = t('ticker_label');
+
+    const navMap = {
+        overview: 'nav_overview',
+        airbases: 'nav_airbases',
+        equipment: 'nav_equipment',
+        exercises: 'nav_exercises',
+        admin: 'nav_admin',
+    };
+    document.querySelectorAll('.nav-tab').forEach((button) => {
+        const key = navMap[button.dataset.tab];
+        if (key) button.textContent = t(key);
+    });
+
+    const statLabels = document.querySelectorAll('.stat-label');
+    const statSubs = document.querySelectorAll('.stat-sub');
+    const statLabelKeys = ['stat_aircraft', 'stat_readiness', 'stat_missions', 'stat_personnel', 'stat_theaters'];
+    const statSubKeys = ['stat_aircraft_sub', 'stat_readiness_sub', 'stat_missions_sub', 'stat_personnel_sub', 'stat_theaters_sub'];
+    statLabels.forEach((label, index) => { if (statLabelKeys[index]) label.textContent = t(statLabelKeys[index]); });
+    statSubs.forEach((label, index) => { if (statSubKeys[index]) label.textContent = t(statSubKeys[index]); });
+
+    const panelTitles = document.querySelectorAll('#tab-overview .panel-title');
+    const panelKeys = ['fleet_title', 'readiness_title', 'missions_title', 'radar_title', 'map_title', 'log_title', 'personnel_title'];
+    panelTitles.forEach((panel, index) => {
+        const icon = panel.querySelector('.icon')?.outerHTML || '';
+        const key = panelKeys[index];
+        if (key) panel.innerHTML = `${icon} ${t(key)}`;
+    });
+
+    const readinessLabel = document.querySelector('.readiness-label');
+    if (readinessLabel) readinessLabel.textContent = t('readiness_center');
+    const readinessTexts = document.querySelectorAll('.readiness-text');
+    const readinessKeys = ['readiness_ready', 'readiness_maint', 'readiness_standby', 'readiness_upgrade'];
+    readinessTexts.forEach((node, index) => { if (readinessKeys[index]) node.textContent = t(readinessKeys[index]); });
+
+    const missionHeaders = document.querySelectorAll('.mission-table thead th');
+    const headerKeys = ['table_id', 'table_type', 'table_theater', 'table_base', 'table_aircraft', 'table_time', 'table_status'];
+    missionHeaders.forEach((node, index) => { if (headerKeys[index]) node.textContent = t(headerKeys[index]); });
+    const adminTables = document.querySelectorAll('#tab-admin table');
+    if (adminTables[0]) {
+        const loginHeaders = adminTables[0].querySelectorAll('th');
+        const loginKeys = ['col_time', 'col_account', 'col_ip', 'table_status'];
+        loginHeaders.forEach((node, index) => { if (loginKeys[index]) node.textContent = t(loginKeys[index]); });
+    }
+    if (adminTables[1]) {
+        const opHeaders = adminTables[1].querySelectorAll('th');
+        const opKeys = ['col_time', 'col_operator', 'col_action', 'col_target', 'table_status'];
+        opHeaders.forEach((node, index) => { if (opKeys[index]) node.textContent = t(opKeys[index]); });
+    }
+
+    const exercisesTitle = document.querySelector('#tab-exercises .panel-title');
+    if (exercisesTitle) exercisesTitle.innerHTML = '<span class="icon">⚔</span> ' + t('exercises_title');
+
+    const footerTexts = document.querySelectorAll('.footer-text');
+    if (footerTexts[0]) footerTexts[0].textContent = t('footer_name');
+    if (footerTexts[1]) footerTexts[1].textContent = t('footer_demo');
+    if (footerTexts[2]) footerTexts[2].textContent = `${t('footer_updated')}: 2026-03-17`;
+    const footerStatus = document.querySelector('.footer-status');
+    if (footerStatus) footerStatus.innerHTML = '<span class="status-dot green"></span> ' + t('footer_online');
+
+    const adminLabels = document.querySelectorAll('#tab-admin .stat-label');
+    const adminKeys = ['admin_total_users', 'admin_total_logins', 'admin_failed_logins', 'admin_total_ops'];
+    adminLabels.forEach((node, index) => { if (adminKeys[index]) node.textContent = t(adminKeys[index]); });
+    const trend = document.querySelector('#tab-admin .stat-trend');
+    if (trend) trend.innerHTML = `${t('admin_today_logins')} <span id="adminTodayLogins">0</span>${t('admin_count_suffix') ? ' ' + t('admin_count_suffix') : ''}`;
+    const adminPanelTitles = document.querySelectorAll('#tab-admin .panel-title');
+    if (adminPanelTitles[0]) adminPanelTitles[0].textContent = t('admin_login_title');
+    if (adminPanelTitles[1]) adminPanelTitles[1].textContent = t('admin_op_title');
+    const refreshBtn = document.querySelector('#tab-admin .view-btn');
+    if (refreshBtn) refreshBtn.textContent = t('refresh');
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    applyStaticTranslations();
     // ===== Auth Guard =====
     const token = localStorage.getItem('plaaf_token');
     if (!token) {
@@ -13,6 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 顯示使用者資訊 + 登出按鈕
     const userData = initUserInfo();
+    initLanguageToggle();
 
     // 先初始化不需要資料的元件
     initParticles();
@@ -50,13 +158,13 @@ function initUserInfo() {
     if (!userInfo) return null;
 
     const userData = JSON.parse(localStorage.getItem('plaaf_user') || '{}');
-    const displayName = userData.displayName || userData.username || '操作員';
-    const role = userData.role === 'admin' ? '管理員' : '操作員';
+    const displayName = mapValue(userData.displayName || userData.username || t('role_operator'), USER_DISPLAY_EN);
+    const role = userData.role === 'admin' ? t('role_admin') : t('role_operator');
 
     userInfo.innerHTML = `
         <span class="user-role-badge">${role}</span>
         <span class="user-display-name">${displayName}</span>
-        <button class="logout-btn" id="logoutBtn" title="登出系統">⏻ 登出</button>
+        <button class="logout-btn" id="logoutBtn" title="${t('logout')}">${t('logout')}</button>
     `;
     userInfo.style.display = 'flex';
 
@@ -95,8 +203,11 @@ function initClock() {
         const y = now.getFullYear();
         const mo = String(now.getMonth() + 1).padStart(2, '0');
         const d = String(now.getDate()).padStart(2, '0');
-        const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
-        document.getElementById('date').textContent = `${y}-${mo}-${d} 星期${weekDays[now.getDay()]}`;
+        const weekDaysZh = ['日', '一', '二', '三', '四', '五', '六'];
+        const weekDaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        document.getElementById('date').textContent = isEnglishMode()
+            ? `${y}-${mo}-${d} ${weekDaysEn[now.getDay()]}`
+            : `${y}-${mo}-${d} 星期${weekDaysZh[now.getDay()]}`;
     }
     update();
     setInterval(update, 1000);
@@ -268,7 +379,7 @@ function initMissionTable() {
 
         // Update panel title with date
         const panelTitle = tbody.closest('.panel')?.querySelector('.panel-title');
-        if (panelTitle) panelTitle.innerHTML = '<span class="icon">\u{1F4CB}</span> \u4ECA\u65E5\u4EFB\u52D9\u6392\u7A0B\u3010' + dateLabel + '\u3011';
+        if (panelTitle) panelTitle.innerHTML = '<span class="icon">\u{1F4CB}</span> ' + t('missions_title') + ' [' + dateLabel + ']';
 
         missions.forEach(m => {
             const statusClass = m.status === '\u9032\u884C\u4E2D' ? 'active'
@@ -438,6 +549,7 @@ function initPersonnel() {
     const grid = document.getElementById('personnelGrid');
     if (!grid) return;
 
+    grid.innerHTML = '';
     PERSONNEL_DATA.forEach(item => {
         const div = document.createElement('div');
         div.className = 'personnel-item';
@@ -481,7 +593,12 @@ function initEquipment() {
     categories.forEach(cat => {
         const btn = document.createElement('button');
         btn.className = `filter-btn${cat === '全部' ? ' active' : ''}`;
-        btn.textContent = cat;
+        btn.textContent = cat === '全部' ? t('filter_all')
+            : cat === '戰鬥機' ? t('filter_fighters')
+                : cat === '轟炸機' ? t('filter_bombers')
+                    : cat === '運輸機' ? t('filter_transport')
+                        : cat === '預警機' ? t('filter_awacs')
+                            : t('filter_uav');
         btn.addEventListener('click', () => {
             filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -503,18 +620,18 @@ function initEquipment() {
 
             const specsHtml = Object.entries(eq.specs).map(([key, val]) => {
                 const labels = {
-                    manufacturer: '製造商',
-                    firstFlight: '首飛',
-                    length: '機長',
-                    wingspan: '翼展',
-                    maxSpeed: '最大速度',
-                    range: '航程',
-                    combatRadius: '作戰半徑',
-                    ceiling: '升限',
-                    weapons: '武裝',
-                    payload: '載重',
-                    endurance: '續航',
-                    radar: '雷達'
+                    manufacturer: t('spec_manufacturer'),
+                    firstFlight: t('spec_firstFlight'),
+                    length: t('spec_length'),
+                    wingspan: t('spec_wingspan'),
+                    maxSpeed: t('spec_maxSpeed'),
+                    range: t('spec_range'),
+                    combatRadius: t('spec_combatRadius'),
+                    ceiling: t('spec_ceiling'),
+                    weapons: t('spec_weapons'),
+                    payload: t('spec_payload'),
+                    endurance: t('spec_endurance'),
+                    radar: t('spec_radar')
                 };
                 return `<div class="spec-item"><span class="spec-label">${labels[key] || key}</span><span class="spec-value">${val}</span></div>`;
             }).join('');
@@ -526,7 +643,7 @@ function initEquipment() {
         <div class="equipment-card-type">${eq.type}</div>
         <div class="equipment-card-desc">${eq.description}</div>
         <div class="equipment-specs-toggle">
-          <button class="specs-toggle-btn" onclick="this.closest('.equipment-card').classList.toggle('specs-open'); this.textContent = this.closest('.equipment-card').classList.contains('specs-open') ? '▲ 收合規格' : '▼ 展開規格'">▼ 展開規格</button>
+          <button class="specs-toggle-btn" onclick="this.closest('.equipment-card').classList.toggle('specs-open'); this.textContent = this.closest('.equipment-card').classList.contains('specs-open') ? '${t('specs_close')}' : '${t('specs_open')}'">${t('specs_open')}</button>
         </div>
         <div class="equipment-specs collapsed">${specsHtml}</div>
       </div>
@@ -566,7 +683,7 @@ function initExercises() {
     years.forEach(year => {
         const btn = document.createElement('button');
         btn.className = `filter-btn${year === '全部' ? ' active' : ''}`;
-        btn.textContent = year;
+        btn.textContent = year === '全部' ? t('filter_all') : year;
         btn.addEventListener('click', () => {
             filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -594,7 +711,7 @@ function initExercises() {
       <div class="exercise-location">📍 ${ex.location}</div>
       <div class="exercise-desc">${ex.description}</div>
       <div class="exercise-meta">
-        <span class="exercise-tag tag-scale">規模：${ex.scale}</span>
+        <span class="exercise-tag tag-scale">${t('scale_label')}: ${ex.scale}</span>
         <span class="exercise-tag tag-participants">${ex.participants}</span>
       </div>
     `;
@@ -626,14 +743,14 @@ function initAirbases() {
     filterContainer.className = 'equipment-filter';
 
     const theaters = ['全部', '東部戰區', '南部戰區', '西部戰區', '北部戰區', '中部戰區'];
-    theaters.forEach(t => {
+    theaters.forEach(theaterName => {
         const btn = document.createElement('button');
-        btn.className = `filter-btn${t === '全部' ? ' active' : ''}`;
-        btn.textContent = t;
+        btn.className = `filter-btn${theaterName === '全部' ? ' active' : ''}`;
+        btn.textContent = theaterName === '全部' ? t('filter_all') : mapValue(theaterName, EN_MAPS.theaters);
         btn.addEventListener('click', () => {
             filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            filterBases(t === '全部' ? null : t);
+            filterBases(theaterName === '全部' ? null : theaterName);
         });
         filterContainer.appendChild(btn);
     });
@@ -685,20 +802,20 @@ function initAirbases() {
       </div>
       <div class="airbase-card-body">
         <div class="airbase-info-row">
-          <span class="airbase-info-label">跑道</span>
+          <span class="airbase-info-label">${t('airbase_runway')}</span>
           <span class="airbase-info-value">${base.runway}</span>
         </div>
         <div class="airbase-info-row">
-          <span class="airbase-info-label">戰機總數</span>
-          <span class="airbase-info-value airbase-total">${total} 架</span>
+          <span class="airbase-info-label">${t('airbase_total')}</span>
+          <span class="airbase-info-value airbase-total">${total}${isEnglishMode() ? '' : ' 架'}</span>
         </div>
         <div class="airbase-info-row">
-          <span class="airbase-info-label">狀態</span>
+          <span class="airbase-info-label">${t('airbase_status')}</span>
           <span class="airbase-status-dot"></span>
-          <span class="airbase-info-value" style="color: var(--accent-green)">作戰就緒</span>
+          <span class="airbase-info-value" style="color: var(--accent-green)">${t('airbase_ready')}</span>
         </div>
         <div class="airbase-aircraft-section">
-          <div class="airbase-section-title">部署機型</div>
+          <div class="airbase-section-title">${t('airbase_section')}</div>
           ${aircraftBars}
         </div>
         <div class="airbase-desc">${base.description}</div>
@@ -728,7 +845,7 @@ function initScrollToTop() {
     btn.className = 'scroll-to-top';
     btn.id = 'scrollToTop';
     btn.innerHTML = '▲';
-    btn.title = '回到頂部';
+    btn.title = t('scroll_top');
     document.body.appendChild(btn);
 
     window.addEventListener('scroll', () => {
@@ -822,7 +939,7 @@ function initAlertTicker() {
     if (!ticker) return;
 
     const alerts = ALERTS_DATA.length > 0 ? ALERTS_DATA : [
-        { level: 'info', text: '系統啟動中...' },
+        { level: 'info', text: isEnglishMode() ? 'System initializing...' : '系統啟動中...' },
     ];
 
     const track = ticker.querySelector('.ticker-track');
@@ -957,7 +1074,7 @@ function initTheaterMap() {
                 ctx.font = '8px "JetBrains Mono", monospace';
                 ctx.fillStyle = `rgba(${parseInt(tc.slice(1, 3), 16)}, ${parseInt(tc.slice(3, 5), 16)}, ${parseInt(tc.slice(5, 7), 16)}, 0.7)`;
                 ctx.textAlign = 'left';
-                ctx.fillText(base.name.replace('基地', ''), bx + 8, by + 3);
+                ctx.fillText(isEnglishMode() ? base.name.replace(' Air Base', '') : base.name.replace('基地', ''), bx + 8, by + 3);
             });
         }
 
@@ -979,7 +1096,7 @@ function initTheaterMap() {
         ctx.textAlign = 'left';
         ctx.fillText('LAT: 35.8°N  LON: 104.1°E', 10, H - 10);
         ctx.textAlign = 'right';
-        ctx.fillText('THEATER CMD OVERVIEW', W - 10, H - 10);
+        ctx.fillText(isEnglishMode() ? 'THEATER COMMAND OVERVIEW' : '戰區指揮總覽', W - 10, H - 10);
 
         time += 0.016;
         requestAnimationFrame(draw);
@@ -993,7 +1110,7 @@ function initEventLog() {
     if (!log) return;
 
     const events = EVENTS_DATA.length > 0 ? EVENTS_DATA : [
-        { level: 'info', msg: '系統啟動中...' },
+        { level: 'info', msg: isEnglishMode() ? 'System initializing...' : '系統啟動中...' },
     ];
 
     let index = 0;
@@ -1069,7 +1186,7 @@ function renderLoginLogs(logs) {
     tbody.innerHTML = logs.map(log => {
         const time = new Date(log.created_at).toLocaleString('zh-TW', { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit' });
         const statusClass = log.success ? 'status-text-green' : 'status-text-red';
-        const statusText = log.success ? '成功' : '失敗';
+        const statusText = log.success ? t('status_success') : t('status_failed');
         const userDisplay = log.username + (log.display_name ? ` (${log.display_name})` : '');
         
         return `

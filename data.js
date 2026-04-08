@@ -126,9 +126,9 @@ async function apiFetch(endpoint) {
   try {
     const data = await fetchStaticJson(mappedPath);
     if (normalized === 'missions') {
-      return normalizeMissions(data);
+      return localizePayload(normalized, normalizeMissions(data));
     }
-    return data;
+    return localizePayload(normalized, data);
   } catch (err) {
     console.error(`[Static API] ${normalized} failed:`, err);
     return null;

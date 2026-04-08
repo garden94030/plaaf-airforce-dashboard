@@ -550,6 +550,29 @@ body::before {
   line-height: 1.6;
 }
 
+.login-credit {
+  margin-top: 10px;
+  color: rgba(217, 244, 240, 0.78);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.login-lang-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 30;
+  appearance: none;
+  border: 1px solid rgba(0, 255, 200, 0.25);
+  background: rgba(0, 10, 18, 0.88);
+  color: #d7fff6;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 @media (max-width: 480px) {
   .demo-login-actions {
     grid-template-columns: 1fr;
@@ -557,5 +580,11 @@ body::before {
 
   .demo-login-btn {
     width: 100%;
+  }
+
+  .login-lang-toggle {
+    top: 12px;
+    right: 12px;
+    padding: 7px 12px;
   }
 }
